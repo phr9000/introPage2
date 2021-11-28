@@ -106,12 +106,36 @@
     <!-- about story in  -->
     <section style="padding-left: 1.5rem">
       <h3 class="nfts_txt" style="color: #fff; font-size: 1.7rem">NFTs</h3>
+
+      <!-- 슬라이드 영역 -->
+      <vue-glide>
+        <vue-glide-slide class="slide-wrap">
+          <img src="@/assets/slide01.jpg" alt="slide1" />
+        </vue-glide-slide>
+        <vue-glide-slide class="slide-wrap">
+          <img src="@/assets/slide02.jpg" alt="slide2" />
+        </vue-glide-slide>
+        <vue-glide-slide class="slide-wrap">
+          <img src="@/assets/slide03.jpg" alt="slide3" />
+        </vue-glide-slide>
+        <vue-glide-slide class="slide-wrap">
+          <img src="@/assets/slide04.jpg" alt="slide4" />
+        </vue-glide-slide>
+        <vue-glide-slide class="slide-wrap">
+          <img src="@/assets/slide05.jpg" alt="slide5" />
+        </vue-glide-slide>
+      </vue-glide>
     </section>
   </div>
 </template>
 
 <script>
+import { Glide, GlideSlide } from "vue-glide-js";
 export default {
+  components: {
+    [Glide.name]: Glide,
+    [GlideSlide.name]: GlideSlide,
+  },
   name: "app",
   data() {
     return {};
@@ -120,6 +144,10 @@ export default {
 </script>
 
 <style>
+#introPage {
+  color: #fff;
+}
+
 header {
   width: 100%;
   height: 80px;
@@ -227,5 +255,17 @@ h3 {
   width: 100%;
   height: 300px;
   color: #fff;
+}
+
+/* 이미지 */
+.slide-wrap {
+  width: 100%;
+  height: 320px;
+}
+
+.slide-wrap > img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
 }
 </style>
