@@ -81,7 +81,7 @@
           color: #fff;
           font-size: 22px;
           text-align: left;
-          padding-left: 2rem;
+          padding-left: 2.3rem;
         "
       >
         Once upon a time, the world was on the verge of extinction by The four
@@ -103,12 +103,13 @@
       </div>
     </section>
 
-    <!-- about story in  -->
-    <section style="padding-left: 1.5rem">
-      <h3 class="nfts_txt" style="color: #fff; font-size: 1.7rem">NFTs</h3>
+    <!-- about story slide  -->
+    <section class="about-story-slide-wrap" style="padding-left: 1.5rem">
+      <h3 class="nfts_txt">NFTs</h3>
 
       <!-- 슬라이드 영역 -->
-      <vue-glide>
+      <vue-glide class="about-story-slide-wrap-in">
+        <!-- 슬라이드 이미지 영역 -->
         <vue-glide-slide class="slide-wrap">
           <img src="@/assets/slide01.jpg" alt="slide1" />
         </vue-glide-slide>
@@ -124,12 +125,20 @@
         <vue-glide-slide class="slide-wrap">
           <img src="@/assets/slide05.jpg" alt="slide5" />
         </vue-glide-slide>
+
+        <template slot="control">
+          <div class="slide-arrow slide-prev-wrap" data-glide-dir="<" style="">
+            &lt;
+          </div>
+          <div class="slide-arrow slide-next-wrap" data-glide-dir=">">&gt;</div>
+        </template>
       </vue-glide>
     </section>
   </div>
 </template>
 
 <script>
+// 슬라이드 플러그인 컴포넌트
 import { Glide, GlideSlide } from "vue-glide-js";
 export default {
   components: {
@@ -214,7 +223,7 @@ h3 {
 .txt {
   font-size: 1.2rem;
 }
-/* about story */
+/*##### about story #####*/
 
 h3 {
   margin-top: 50px;
@@ -257,7 +266,35 @@ h3 {
   color: #fff;
 }
 
-/* 이미지 */
+/*####### 슬라이드영역 #####*/
+/* 
+  슬라이드 전체 감싸는 부모영역 
+*/
+.about-story-slide-wrap {
+  padding-left: 1.5rem;
+}
+
+.about-story-slide-wrap .nfts_txt {
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.about-story-slide-wrap-in {
+  position: relative;
+}
+
+/*
+  슬라이드 전체 영역
+*/
+
+.glide {
+  padding: 0px 3rem 0px 1.5rem;
+}
+
+/*
+  슬라이드 이미지 영역
+*/
+
 .slide-wrap {
   width: 100%;
   height: 320px;
@@ -267,5 +304,44 @@ h3 {
   width: 100%;
   height: 320px;
   object-fit: cover;
+}
+
+/*
+  슬라이드 화살표 공통 영역
+*/
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 37px;
+  height: 37px;
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  fonst-weight: 900;
+  transition: all 0.5s;
+}
+
+.slide-arrow:hover {
+  background-color: #eaeaea;
+  color: #747474;
+  border: 2px solid #eaeaea;
+}
+/*
+  화살표 prev, next 각각 영역
+ */
+
+.slide-prev-wrap {
+  left: -0.1rem;
+}
+
+.slide-next-wrap {
+  right: -0.7rem;
 }
 </style>
